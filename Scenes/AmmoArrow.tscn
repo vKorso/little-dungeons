@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bqi36mlyovjjp"]
+
+[ext_resource type="Texture2D" uid="uid://cce5hgtdje0c" path="res://Assets/Weapons/bow_p.png" id="1_rvgnx"]
+[ext_resource type="Script" uid="uid://bwl342ehb4ppg" path="res://Scripts/ammo_arrow.gd" id="1_xh7js"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh7js"]
+size = Vector2(15, 5)
+
+[node name="Area2D" type="Area2D" unique_id=1162237124]
+script = ExtResource("1_xh7js")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376855744]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_xh7js")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1674526691]
+texture = ExtResource("1_rvgnx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

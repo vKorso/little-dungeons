@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bh13bvk4k2ngf"]
+
+[ext_resource type="Texture2D" uid="uid://b03exwrxmo57l" path="res://Assets/Weapons/bow.png" id="1_ik1je"]
+[ext_resource type="Script" uid="uid://c5pv0b6eyiqwx" path="res://Scripts/weapon_bow.gd" id="1_jsssw"]
+
+[node name="Bow" type="Node2D" unique_id=1272149271]
+script = ExtResource("1_jsssw")
+
+[node name="Pivot" type="Marker2D" parent="." unique_id=599475934]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=582787053]
+position = Vector2(13, 0)
+texture = ExtResource("1_ik1je")
+
+[node name="ShotPoint" type="Marker2D" parent="Sprite2D" unique_id=2044967095]
+position = Vector2(3, 0)
