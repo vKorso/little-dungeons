@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://doru30vyx7pqc"]
+
+[ext_resource type="Script" uid="uid://ckddq0pexgft5" path="res://Scripts/menu.gd" id="1_cayip"]
+[ext_resource type="Texture2D" uid="uid://bxysehiuva8dl" path="res://Assets/UI/MenuBackgroundBlur.png" id="2_158mb"]
+[ext_resource type="Texture2D" uid="uid://bmcp2yjavcmwy" path="res://Assets/UI/Logo.png" id="3_158mb"]
+[ext_resource type="Texture2D" uid="uid://mll2umuwxisd" path="res://Assets/UI/Basic Buttons 3 Fv.png" id="3_wwsa2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsrd8"]
+atlas = ExtResource("3_wwsa2")
+region = Rect2(240, 128, 58, 26)
+
+[node name="Menu" type="Control" unique_id=146878342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cayip")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1246139079]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 2810.0
+offset_bottom = 1527.0
+scale = Vector2(0.4377207, 0.4377207)
+texture = ExtResource("2_158mb")
+
+[node name="Title" type="TextureRect" parent="." unique_id=1726283713]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.20400001
+anchor_right = 0.5
+anchor_bottom = 0.20400001
+offset_left = -607.0
+offset_top = -213.192
+offset_right = 673.0
+offset_bottom = 506.80798
+grow_horizontal = 2
+texture = ExtResource("3_158mb")
+
+[node name="ButtonTextPlay" type="TextureRect" parent="." unique_id=87885454]
+layout_mode = 0
+offset_left = 462.00003
+offset_top = 419.0
+offset_right = 520.0
+offset_bottom = 459.0
+scale = Vector2(3.7833498, 2.2936723)
+texture = SubResource("AtlasTexture_jsrd8")
+
+[node name="Button" type="Button" parent="ButtonTextPlay" unique_id=1321219669]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -1.0572805
+offset_top = 0.8719641
+offset_right = 8.817988
+offset_bottom = 11.980672
+scale = Vector2(6.1560545, 3.5322187)
+
+[connection signal="pressed" from="ButtonTextPlay/Button" to="." method="_on_button_pressed"]

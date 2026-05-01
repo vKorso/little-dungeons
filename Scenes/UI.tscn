@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bub5xpfiew60q"]
+
+[ext_resource type="Texture2D" uid="uid://b03exwrxmo57l" path="res://Assets/Weapons/bow.png" id="1_hfhsn"]
+[ext_resource type="Script" uid="uid://ccgtskakofa8k" path="res://Scripts/portrait.gd" id="1_nxvpl"]
+[ext_resource type="Texture2D" uid="uid://b14p1uutrcobb" path="res://Assets/DG Asha Character/Blue Asha portrait base.png" id="1_w371h"]
+[ext_resource type="Texture2D" uid="uid://byhh3odhijw6e" path="res://Assets/heart.png" id="3_dewlx"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1313129383]
+
+[node name="Control" type="Control" parent="." unique_id=1446414296]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon" type="VBoxContainer" parent="Control" unique_id=564823130]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Control/Weapon" unique_id=110324544]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Weapon/Control" unique_id=2042692794]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Panel" type="Panel" parent="Control/Weapon/Control" unique_id=613753468]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 4.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Weapon/Control" unique_id=770644948]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 38.0
+texture = ExtResource("1_hfhsn")
+
+[node name="Portrait" type="VBoxContainer" parent="Control" unique_id=586777550]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nxvpl")
+
+[node name="Control" type="Control" parent="Control/Portrait" unique_id=1604698683]
+layout_mode = 2
+
+[node name="LifeText" type="Label" parent="Control/Portrait/Control" unique_id=426829673]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 80.0
+offset_right = 90.0
+offset_bottom = 103.0
+text = "100"
+
+[node name="Panel" type="Panel" parent="Control/Portrait/Control" unique_id=2109409861]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 4.0
+
+[node name="Avatar" type="TextureRect" parent="Control/Portrait/Control" unique_id=1054122339]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 89.07692
+offset_bottom = 79.0
+texture = ExtResource("1_w371h")
+
+[node name="HeartIcon" type="TextureRect" parent="Control/Portrait/Control" unique_id=325385111]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 63.0
+offset_right = 1189.0
+offset_bottom = 1247.0
+scale = Vector2(0.049423072, 0.048939977)
+texture = ExtResource("3_dewlx")

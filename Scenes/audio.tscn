@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cabu4xejqhvtk"]
+
+[ext_resource type="Script" uid="uid://cc6elf25xbedu" path="res://Scripts/audio.gd" id="1_c8j57"]
+[ext_resource type="AudioStream" uid="uid://bquu7b3sbcl46" path="res://Sounds/Music/genxbeats-dungeon-game-type-rap-beat-20240802-231903.mp3" id="1_l04ps"]
+[ext_resource type="AudioStream" uid="uid://dj8qinkfgoq62" path="res://Sounds/Effects/freesound_community-bow-release-bow-and-arrow-4-101936.mp3" id="2_y8l05"]
+
+[node name="Audio" type="Node2D" unique_id=1998584379]
+script = ExtResource("1_c8j57")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=2087523055]
+stream = ExtResource("1_l04ps")
+volume_db = -5.0
+
+[node name="ShootBow" type="AudioStreamPlayer2D" parent="." unique_id=1246896327]
+stream = ExtResource("2_y8l05")
