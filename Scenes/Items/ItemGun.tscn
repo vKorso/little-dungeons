@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://bys0b8dy46nki"]
+
+[ext_resource type="Script" uid="uid://cjs8j2nhkjaaf" path="res://Scripts/item.gd" id="1_76mu4"]
+[ext_resource type="Texture2D" uid="uid://d2famyavlpvqg" path="res://Assets/Weapons/gun.png" id="1_ys0gr"]
+
+[sub_resource type="Gradient" id="Gradient_76mu4"]
+offsets = PackedFloat32Array(0, 0.44047618, 0.75793654)
+colors = PackedColorArray(0, 1, 0.8745098, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u06aw"]
+gradient = SubResource("Gradient_76mu4")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_btogu"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.334192), 0.0, 0.0, 0, 0, Vector2(1, 0.6561496), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tnst4"]
+curve = SubResource("Curve_btogu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_renmp"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 100.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 199.99998
+gravity = Vector3(0, -40, 0)
+scale_over_velocity_min = 120.0
+scale_over_velocity_max = 250.0
+scale_over_velocity_curve = SubResource("CurveTexture_tnst4")
+color = Color(1, 1, 0.92156863, 1)
+color_ramp = SubResource("GradientTexture1D_u06aw")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_76mu4"]
+radius = 7.071068
+
+[sub_resource type="Animation" id="Animation_u06aw"]
+resource_name = "Fly"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0), Vector2(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_btogu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_tnst4"]
+resource_name = "Spawn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_renmp"]
+_data = {
+&"Fly": SubResource("Animation_u06aw"),
+&"RESET": SubResource("Animation_btogu"),
+&"Spawn": SubResource("Animation_tnst4")
+}
+
+[node name="Item" type="Area2D" unique_id=1162695758]
+z_index = 1
+script = ExtResource("1_76mu4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1774796213]
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_renmp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1536589311]
+position = Vector2(0, -1)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_ys0gr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=82899100]
+shape = SubResource("CircleShape2D_76mu4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=299764900]
+libraries/ = SubResource("AnimationLibrary_renmp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

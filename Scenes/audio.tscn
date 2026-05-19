@@ -3,13 +3,27 @@
 [ext_resource type="Script" uid="uid://cc6elf25xbedu" path="res://Scripts/audio.gd" id="1_c8j57"]
 [ext_resource type="AudioStream" uid="uid://bquu7b3sbcl46" path="res://Sounds/Music/genxbeats-dungeon-game-type-rap-beat-20240802-231903.mp3" id="1_l04ps"]
 [ext_resource type="AudioStream" uid="uid://dj8qinkfgoq62" path="res://Sounds/Effects/freesound_community-bow-release-bow-and-arrow-4-101936.mp3" id="2_y8l05"]
+[ext_resource type="AudioStream" uid="uid://cnea8a03c6hh1" path="res://Sounds/Music/credits.mp3" id="4_pess6"]
+[ext_resource type="AudioStream" uid="uid://toqcl27g6b7" path="res://Sounds/Effects/submachine-gun.mp3" id="5_fqpxi"]
+[ext_resource type="AudioStream" uid="uid://rikorsiana6h" path="res://Sounds/Music/bossbattle.mp3" id="6_4thc6"]
 
 [node name="Audio" type="Node2D" unique_id=1998584379]
 script = ExtResource("1_c8j57")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=2087523055]
 stream = ExtResource("1_l04ps")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="ShootBow" type="AudioStreamPlayer2D" parent="." unique_id=1246896327]
 stream = ExtResource("2_y8l05")
+
+[node name="Credits" type="AudioStreamPlayer2D" parent="." unique_id=1191141209]
+stream = ExtResource("4_pess6")
+
+[node name="ShootGun" type="AudioStreamPlayer2D" parent="." unique_id=348463508]
+stream = ExtResource("5_fqpxi")
+volume_db = -20.0
+
+[node name="MusicBossBattle" type="AudioStreamPlayer2D" parent="." unique_id=197000030]
+stream = ExtResource("6_4thc6")
+volume_db = -10.0

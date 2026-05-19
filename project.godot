@@ -8,6 +8,10 @@
 
 config_version=5
 
+[ResCleaner]
+
+data/keep_list=Array[String](["res://.editorconfig", "res://export_presets.cfg", "res://icon.svg", "res://icon.svg.bkp", "res://README.md", "res://Scenes/audio.tscn", "res://Scenes/Credits.tscn", "res://Scenes/Level1.tscn3835435877.tmp", "res://Scenes/Levels/Level1.tscn", "res://Scenes/Levels/Level2.tscn", "res://Scenes/Levels/Level3.tscn", "res://Scenes/Levels/LevelInfinite.tscn", "res://Scenes/Levels/LevelIntro.tscn", "res://Scenes/Levels/LevelTransition.tscn", "res://Scenes/menu.tscn", "res://Scripts/data.gd"])
+
 [application]
 
 config/name="Little Dungeons"
@@ -18,11 +22,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 Audio="*uid://cabu4xejqhvtk"
+LevelTransition="*uid://2h8mkwah4bmi"
+Data="*uid://cb4p4stpwx8i6"
+GameStats="*uid://c10mwwc1c38hc"
 
 [display]
 
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="uid://oedebdu7jmnp"
+window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://b2eqxl4rsu3wl"
 mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [input]
@@ -64,6 +72,11 @@ Shoot={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(200, 23),"global_position":Vector2(212, 83),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 

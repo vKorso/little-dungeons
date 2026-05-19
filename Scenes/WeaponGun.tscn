@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dfu6lukaiuur1"]
+
+[ext_resource type="Script" uid="uid://fpufxn8civ2" path="res://Scripts/weapon_gun.gd" id="1_dy38k"]
+[ext_resource type="PackedScene" uid="uid://c0qmik1vk66ui" path="res://Scenes/AmmoGun.tscn" id="2_wdpu3"]
+[ext_resource type="Texture2D" uid="uid://d2famyavlpvqg" path="res://Assets/Weapons/gun.png" id="3_wdpu3"]
+
+[sub_resource type="Animation" id="Animation_jsssw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p3hip"]
+resource_name = "Shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(13, 0), Vector2(11.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_woarf"]
+_data = {
+&"RESET": SubResource("Animation_jsssw"),
+&"Shoot": SubResource("Animation_p3hip")
+}
+
+[node name="WeaponGun" type="Node2D" unique_id=1272149271]
+z_index = 1
+script = ExtResource("1_dy38k")
+fire_rate = 0.175
+projectile_scene = ExtResource("2_wdpu3")
+
+[node name="Pivot" type="Marker2D" parent="." unique_id=599475934]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=582787053]
+position = Vector2(13, 0)
+texture = ExtResource("3_wdpu3")
+
+[node name="ShotPoint" type="Marker2D" parent="Sprite2D" unique_id=2044967095]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2091015796]
+libraries/ = SubResource("AnimationLibrary_woarf")

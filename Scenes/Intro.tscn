@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b3c3skr60ck8k"]
+
+[ext_resource type="Script" uid="uid://bsqbsw532ywer" path="res://Scripts/intro.gd" id="1_3edat"]
+
+[sub_resource type="Animation" id="Animation_msqbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(41, 707)]
+}
+
+[sub_resource type="Animation" id="Animation_i8h6y"]
+resource_name = "Scroll"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 14.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(41, 707), Vector2(41, -480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xbebw"]
+_data = {
+&"RESET": SubResource("Animation_msqbs"),
+&"Scroll": SubResource("Animation_i8h6y")
+}
+
+[node name="LevelIntro" type="Control" unique_id=631021249]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3edat")
+
+[node name="Panel" type="Panel" parent="." unique_id=1631271007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1636607964]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.0
+offset_top = 383.0
+offset_right = 564.0
+offset_bottom = 952.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Asha es la última guardiana de una antigua orden de guerreras.
+
+
+
+Su misión siempre fue custodiar los límites de la Cripta Panchux,
+un lugar donde los muertos no siempre descansan en paz.
+
+
+
+Una noche, la luna se tiñe de un rojo maldito.
+Asha, sospecha que ha vuelto el mal, el Rey Esqueleto..."
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1402645370]
+libraries/ = SubResource("AnimationLibrary_xbebw")
+autoplay = &"Scroll"

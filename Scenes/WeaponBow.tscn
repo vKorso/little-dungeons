@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b03exwrxmo57l" path="res://Assets/Weapons/bow.png" id="1_ik1je"]
 [ext_resource type="Script" uid="uid://c5pv0b6eyiqwx" path="res://Scripts/weapon_bow.gd" id="1_jsssw"]
+[ext_resource type="PackedScene" uid="uid://bqi36mlyovjjp" path="res://Scenes/AmmoArrow.tscn" id="2_p3hip"]
 
 [sub_resource type="Animation" id="Animation_jsssw"]
 length = 0.001
@@ -41,7 +42,10 @@ _data = {
 }
 
 [node name="WeaponBow" type="Node2D" unique_id=1272149271]
+z_index = 1
 script = ExtResource("1_jsssw")
+fire_rate = 0.4
+projectile_scene = ExtResource("2_p3hip")
 
 [node name="Pivot" type="Marker2D" parent="." unique_id=599475934]
 

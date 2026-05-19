@@ -1,26 +1,29 @@
 extends Node2D
 
-const BULLET_SCENE = preload("res://Scenes/AmmoArrow.tscn")
-
 ## Cadencia de disparo
-@export var fire_rate: float = 0.5
+@export var fire_rate: float = 0.1
+@export var projectile_scene: PackedScene
 
 @onready var shot_point: Marker2D = $Sprite2D/ShotPoint
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+
+var icon: Texture2D = preload("res://Assets/Weapons/bow.png")
 
 var can_shoot: bool = true
 
 func _shoot() -> void:
 	if not can_shoot:
 		return
+	if not projectile_scene:
+		push_error("WeaponBow: projectile_scene no está asignado en el Inspector")
+		return
 	
 	can_shoot = false
+	var projectile = projectile_scene.instantiate()
 	
-	var new_bullet = BULLET_SCENE.instantiate()
-
-	new_bullet.global_position = shot_point.global_position
-	new_bullet.global_rotation = shot_point.global_rotation
-	get_tree().current_scene.add_child(new_bullet)
+	projectile.global_position = shot_point.global_position
+	projectile.global_rotation = shot_point.global_rotation
+	get_tree().current_scene.add_child(projectile)
 	
 	anim_player.play("Shoot")
 	Audio.play_shoot_bow()

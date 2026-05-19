@@ -2,14 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://cce5hgtdje0c" path="res://Assets/Weapons/bow_p.png" id="1_rvgnx"]
 [ext_resource type="Script" uid="uid://bwl342ehb4ppg" path="res://Scripts/ammo_arrow.gd" id="1_xh7js"]
+[ext_resource type="PackedScene" uid="uid://642jsq0x6dnk" path="res://Scenes/AmmoArrowExplosion.tscn" id="2_bgdj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xh7js"]
 size = Vector2(14, 5)
 
 [node name="Area2D" type="Area2D" unique_id=1162237124]
+z_index = 1
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("1_xh7js")
+explosion_scene = ExtResource("2_bgdj3")
+damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376855744]
 position = Vector2(0, 0.5)

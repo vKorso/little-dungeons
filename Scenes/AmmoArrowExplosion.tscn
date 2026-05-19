@@ -40,6 +40,7 @@ animations = [{
 }]
 
 [node name="AmmoArrowExplosion" type="AnimatedSprite2D" unique_id=1338215787]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_f86d2")
 animation = &"Explosion"
 autoplay = "Explosion"

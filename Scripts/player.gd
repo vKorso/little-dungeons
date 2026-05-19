@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var player_dmg_time: float = 0.3
 ## Tiempo para recuperarse tras recibir daño (player_dmg_time + player_dmg_recovery)
 @export var player_dmg_recovery: float = 0.3
+## Daño recibido por contacto
+@export var damage_contact: float = 5.0
 
 @onready var animation = $AnimatedSprite2D
 
@@ -38,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 	if can_take_damage:
 		for body in $DamageArea.get_overlapping_bodies():
 			if body.is_in_group("Enemies"):
-				take_damage(5)
+				take_damage(damage_contact)
 				break
 
 func _health_bar():
@@ -65,7 +67,7 @@ func take_damage(amount):
 	animation.play("Hurt" + last_dir)
 	
 	if health <= 0:
-		get_tree().reload_current_scene()
+		LevelTransition.change_scene("res://Scenes/menu.tscn")
 		return
 		
 	# Recuperar el control del personaje rápido según variable player_dmg_recovery

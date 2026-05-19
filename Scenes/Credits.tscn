@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cbvs6434vd7ck"]
+
+[ext_resource type="Script" uid="uid://dgsj7kdbqdxpd" path="res://Scripts/credits.gd" id="1_i8h6y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8h6y"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_msqbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(41, 672)]
+}
+
+[sub_resource type="Animation" id="Animation_i8h6y"]
+resource_name = "Scroll"
+length = 28.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 25, 28),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(41, 672), Vector2(41, -1820), Vector2(41, -1820)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xbebw"]
+_data = {
+&"RESET": SubResource("Animation_msqbs"),
+&"Scroll": SubResource("Animation_i8h6y")
+}
+
+[node name="Credits" type="Control" unique_id=631021249]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i8h6y")
+
+[node name="Panel" type="Panel" parent="." unique_id=1631271007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i8h6y")
+
+[node name="Label" type="Label" parent="." unique_id=1636607964]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.0
+offset_top = 348.0
+offset_right = 542.0
+offset_bottom = 2541.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Little Dungeons
+
+Juego creado para el TFG de Videojuegos
+ Universitat Oberta de Catalunya - 2026
+
+Alumno: Antonio Samuel Villanúa Fernández
+
+
+
+Agradecimientos:
+
+A mi madre,
+por amenazarme si no terminaba el grado.
+
+
+A mi padre,
+por usar el comodín psicológico de:
+“hazlo tú, que yo no tuve la oportunidad”.
+
+
+A Ale y Javi, mis amigos,
+por haberme acompañado durante todo el recorrido.
+
+
+A Helena, mi pareja,
+por ser mi guía en el camino.
+
+
+
+
+
+
+
+
+
+¡Muchas gracias por vuestro tiempo!"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1402645370]
+libraries/ = SubResource("AnimationLibrary_xbebw")
+autoplay = &"Scroll"

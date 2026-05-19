@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c0qmik1vk66ui"]
+
+[ext_resource type="Script" uid="uid://bwl342ehb4ppg" path="res://Scripts/ammo_arrow.gd" id="1_h5l5n"]
+[ext_resource type="PackedScene" uid="uid://c6oerhxm7vdn5" path="res://Scenes/AmmoGunExplosion.tscn" id="2_h5l5n"]
+[ext_resource type="Texture2D" uid="uid://blq7v4s1yo18d" path="res://Assets/Weapons/gun_p.png" id="3_h5l5n"]
+[ext_resource type="Texture2D" uid="uid://c7b64dutoxb1e" path="res://Assets/Lights/2d_lights_and_shadows_neutral_point_light.webp" id="4_x2own"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh7js"]
+size = Vector2(11, 6)
+
+[node name="Area2D" type="Area2D" unique_id=1162237124]
+z_index = 1
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_h5l5n")
+explosion_scene = ExtResource("2_h5l5n")
+damage = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376855744]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_xh7js")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1674526691]
+position = Vector2(4.7683716e-07, -2.9802322e-08)
+scale = Vector2(0.87500006, 0.87500006)
+texture = ExtResource("3_h5l5n")
+
+[node name="PointLight2D9" type="PointLight2D" parent="." unique_id=1117568141]
+z_index = 1
+position = Vector2(2, -0.8)
+scale = Vector2(0.09859368, 0.09859368)
+color = Color(0.7607843, 1, 0, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.2
+texture = ExtResource("4_x2own")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

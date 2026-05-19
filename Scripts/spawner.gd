@@ -6,14 +6,20 @@ extends Area2D
 @export var spawn_interval: float = 2.0
 ## Total de enemigos spawneados
 @export var max_total_spawned: int = 5
+## Oleadas
+@export var max_waves: int = 3
+
+signal spawner_completed
 
 var total_spawned: int = 0
 var polygon: PackedVector2Array
 var triangles: PackedInt32Array
 var is_spawning: bool = false
 var enemies_alive = 0
+var wave: int = 0
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	polygon = $CollisionPolygon2D.polygon
 	triangles = Geometry2D.triangulate_polygon(polygon)
 	var existing_enemies = get_tree().get_nodes_in_group("Enemies")
@@ -28,15 +34,13 @@ func _start_spawn_loop() -> void:
 	is_spawning = true
 	_spawn_loop()
 
-
 func _spawn_loop() -> void:
 	while total_spawned < max_total_spawned:
-		await get_tree().create_timer(spawn_interval).timeout
+		await get_tree().create_timer(spawn_interval, false).timeout
 		_spawn_enemy()
 		total_spawned += 1
 		enemies_alive+=1
 	is_spawning = false
-
 
 func _spawn_enemy() -> void:
 	if enemy_scenes.is_empty():
@@ -51,18 +55,19 @@ func _spawn_enemy() -> void:
 func _on_enemy_died():
 	enemies_alive-=1
 	if enemies_alive <= 0 and total_spawned >= max_total_spawned:
-		next_level()
+		wave += 1
+		if wave < max_waves:
+			_start_next_wave()
+		else:
+			emit_signal("spawner_completed")
+			#$"../DoorL2".open_door()
 
-func next_level():
-	#var current_scene_file = get_tree().current_scene.scene_file_path
-	#var next_level_num = current_scene_file.to_int()+1
-	#var next_level_path = "res://Scenes/Level" + str(next_level_num)+".tscn"
-	#if ResourceLoader.exists(next_level_path):
-	#	get_tree().change_scene_to_file(next_level_path)
-	#else:
-	#	print()
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
-	
+func _start_next_wave():
+	# Cada oleada: más enemigos, menos tiempo entre spawns
+	max_total_spawned += 3
+	spawn_interval = max(0.5, spawn_interval - 0.2)
+	total_spawned = 0
+	_start_spawn_loop()
 
 func _get_random_point_in_polygon() -> Vector2:
 	@warning_ignore("integer_division") 
